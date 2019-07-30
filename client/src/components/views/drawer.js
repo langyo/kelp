@@ -27,7 +27,7 @@ import HomeIcon from "mdi-material-ui/Home";
 
 const styles = theme => ({
   list: {
-    width: 150,
+    width: 160,
     opacity: 0.9,
   },
   toolbar: {
@@ -58,7 +58,7 @@ class MainDrawer extends React.Component {
                 <ClassroomIcon />
               </Badge>
             </ListItemIcon>
-            <ListItemText inset primary="当前设备未关联班级" secondary="当前班级" />
+            <ListItemText primary="当前设备未关联班级" secondary="当前班级" />
           </ListItem>
           <ListItem button>
             <ListItemIcon>
@@ -66,7 +66,7 @@ class MainDrawer extends React.Component {
                 <AccountIcon />
               </Badge>
             </ListItemIcon>
-            <ListItemText inset primary="未登录" secondary="当前教师" />
+            <ListItemText primary="未登录" secondary="当前教师" />
           </ListItem>
           <Divider className={classes.line} />
           <ListItem button
@@ -79,7 +79,7 @@ class MainDrawer extends React.Component {
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
-            <ListItemText inset primary="主页" />
+            <ListItemText primary="主页" />
           </ListItem>
           <ListItem button
             onClick={() => this.props.onToggleDrawer("picker")}
@@ -91,7 +91,7 @@ class MainDrawer extends React.Component {
             <ListItemIcon>
               <PickStudentIcon />
             </ListItemIcon>
-            <ListItemText inset primary="点名" />
+            <ListItemText primary="点名" />
           </ListItem>
           <ListItem button
             onClick={() => this.props.onToggleDrawer("classTable")}
@@ -103,7 +103,7 @@ class MainDrawer extends React.Component {
             <ListItemIcon>
               <TableIcon />
             </ListItemIcon>
-            <ListItemText inset primary="座位表" />
+            <ListItemText primary="座位表" />
           </ListItem>
           <ListItem button
             onClick={() => this.props.onToggleDrawer("rankGroup")}
@@ -115,7 +115,7 @@ class MainDrawer extends React.Component {
             <ListItemIcon>
               <RankIcon />
             </ListItemIcon>
-            <ListItemText inset primary="排行榜" />
+            <ListItemText primary="排行榜" />
           </ListItem>
           <ListItem button
             onClick={() => this.props.onToggleDrawer("tests")}
@@ -127,7 +127,7 @@ class MainDrawer extends React.Component {
             <ListItemIcon>
               <PaperIcon />
             </ListItemIcon>
-            <ListItemText inset primary="课堂小练" />
+            <ListItemText primary="课堂小练" />
           </ListItem>
           <Divider className={classes.line} />
           <ListItem button
@@ -140,25 +140,25 @@ class MainDrawer extends React.Component {
             <ListItemIcon>
               <ManagementIcon />
             </ListItemIcon>
-            <ListItemText inset primary="班级管理" />
+            <ListItemText primary="班级管理" />
           </ListItem>
           <ListItem button onClick={() => this.props.onToggleDialog("setting")}>
             <ListItemIcon>
               <SettingIcon />
             </ListItemIcon>
-            <ListItemText inset primary="设置" />
+            <ListItemText primary="设置" />
           </ListItem>
           <ListItem button onClick={() => this.props.onToggleDialog("about")}>
             <ListItemIcon>
               <InfoIcon />
             </ListItemIcon>
-            <ListItemText inset primary="关于" />
+            <ListItemText primary="关于" />
           </ListItem>
           <ListItem button>
             <ListItemIcon>
               <ThemeIcon />
             </ListItemIcon>
-            <ListItemText inset primary="皮肤主题" />
+            <ListItemText primary="皮肤主题" />
           </ListItem>
         </List>
         <Divider />

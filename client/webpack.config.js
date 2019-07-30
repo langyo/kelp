@@ -20,5 +20,13 @@ module.exports = {
         use: 'babel-loader'
       }
     ]
+  },
+
+  devServer: {
+    inline: true,
+    hot: true,
+    filename: 'bundle.js',
+    publicPath: '/public/',
+    port: 16000
   }
 };
