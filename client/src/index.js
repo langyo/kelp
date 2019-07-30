@@ -3,13 +3,15 @@ import { render } from 'react-dom';
 
 import { Window, TitleBar } from 'react-desktop/windows';
 
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
-import App from './components/App';
-import rootReducer from './reducers';
+import reducer from './reducer';
 
-const store = createStore(rootReducer);
+import Fab from "./containers/views/fab";
+import Drawer from "./containers/views/drawer";
+
+const store = createStore(reducer);
 
 render(
   <Provider store={store}>
@@ -17,11 +19,12 @@ render(
       chrome
       height="600px"
       width="800px"
-      padding="12px"
+      padding="0px"
       color="#6cf">
-      <TitleBar title="KELP" background="#eee" controls onCloseClick={() => process.exit()} />
+      <TitleBar title="KELP" background="#eee" controls onCloseClick={() => window.close()} style={{ zIndex: 10000 }}/>
       <div>
-        <App />
+        <Fab />
+        <Drawer />
       </div>
     </Window>
   </Provider>,
