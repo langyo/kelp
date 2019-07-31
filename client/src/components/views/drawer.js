@@ -40,6 +40,16 @@ const styles = theme => ({
 });
 
 class MainDrawer extends React.Component {
+  static propTypes = {
+    // State
+    show: PropTypes.string,
+    open: PropTypes.bool,
+    // Dispatcher
+    onTogglePage: PropTypes.func,
+    onToggleDialog: PropTypes.func,
+    onToggleDrawer: PropTypes.func
+  };
+
   render() {
     const { classes } = this.props;
 
@@ -117,18 +127,6 @@ class MainDrawer extends React.Component {
             </ListItemIcon>
             <ListItemText primary="排行榜" />
           </ListItem>
-          <ListItem button
-            onClick={() => this.props.onToggleDrawer("tests")}
-            selected={
-              ["tests", "questions", "test", "question"]
-                .indexOf(this.props.show) != -1
-            }
-          >
-            <ListItemIcon>
-              <PaperIcon />
-            </ListItemIcon>
-            <ListItemText primary="课堂小练" />
-          </ListItem>
           <Divider className={classes.line} />
           <ListItem button
             onClick={() => this.props.onToggleDrawer("classManagement")}
@@ -142,13 +140,13 @@ class MainDrawer extends React.Component {
             </ListItemIcon>
             <ListItemText primary="班级管理" />
           </ListItem>
-          <ListItem button onClick={() => this.props.onToggleDialog("setting")}>
+          <ListItem button onClick={() => this.props.onToggleDialog('setting')}>
             <ListItemIcon>
               <SettingIcon />
             </ListItemIcon>
             <ListItemText primary="设置" />
           </ListItem>
-          <ListItem button onClick={() => this.props.onToggleDialog("about")}>
+          <ListItem button onClick={() => this.props.onToggleDialog('about')}>
             <ListItemIcon>
               <InfoIcon />
             </ListItemIcon>
@@ -166,15 +164,5 @@ class MainDrawer extends React.Component {
     );
   }
 }
-
-MainDrawer.propTypes = {
-  // State
-  show: PropTypes.string,
-  open: PropTypes.bool,
-  // Dispatcher
-  onTogglePage: PropTypes.func,
-  onToggleDialog: PropTypes.func,
-  onToggleDrawer: PropTypes.func
-};
 
 export default withStyles(styles)(MainDrawer);

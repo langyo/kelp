@@ -1,16 +1,16 @@
 import { connect } from 'react-redux'
 
-import Fab from '../../components/views/fab';
+import About from '../../components/dialog/about';
 
 const mapStateToProps = (state) => {
-  return state.views.drawer;
+  return state.views.dialog;
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onToggleDrawer: () => {
+    onClose: () => {
       dispatch({
-        type: 'views.drawer.toggleDrawer',
+        type: 'views.dialog.reset'
       });
     }
   };
@@ -19,4 +19,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Fab);
+)(About);

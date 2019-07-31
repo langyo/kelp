@@ -8,6 +8,8 @@ import { Provider } from 'react-redux';
 
 import reducer from './reducer';
 
+import AboutDialog from "./containers/dialog/about";
+
 import Fab from "./containers/views/fab";
 import Drawer from "./containers/views/drawer";
 
@@ -19,10 +21,11 @@ render(
       chrome
       height="600px"
       width="800px"
-      padding="0px"
-      color="#6cf">
-      <TitleBar title="KELP" background="#eee" controls onCloseClick={() => window.close()} style={{ zIndex: 10000 }}/>
+      padding="0px">
+      <TitleBar title="KELP" controls onCloseClick={() => window.close()} style={{ zIndex: 10000 }}/>
       <div>
+        <AboutDialog />
+
         <Fab />
         <Drawer />
       </div>

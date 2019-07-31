@@ -10,19 +10,19 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onTogglePage: (name) => {
       dispatch({
-        type: 'views.drawer.onTogglePage',
+        type: 'views.drawer.togglePage',
         name
       });
     },
     onToggleDialog: (name) => {
       dispatch({
-        type: 'views.drawer.onToggleDialog',
+        type: 'views.drawer.toggleDialog',
         name
       });
     },
     onToggleDrawer: () => {
       dispatch({
-        type: 'views.drawer.onToggleDrawer',
+        type: 'views.drawer.toggleDrawer',
       });
     }
   };

@@ -1,31 +1,54 @@
 import initStore from './initStore';
 
 export default (state = initStore, action) => {
+  console.log("Redux state:", state);
   switch (action.type) {
-    case 'views.drawer.onTogglePage':
-      return Object.assign({}, state, {
+    /* views.dialog */
+    case 'views.dialog.reset':
+      return {
+        ...state,
         views: {
-          drawer: {
-            show: action.name
-          }
-        }
-      });
-    case 'views.drawer.onToggleDialog':
-      return Object.assign({}, state, {
-        views: {
+          ...state.views,
           dialog: {
+            ...state.views.dialog,
+            show: ''
+          }
+        }
+      };
+    /* views.drawer */
+    case 'views.drawer.togglePage':
+      return {
+        ...state,
+        views: {
+          ...state.views,
+          drawer: {
+            ...state.views.drawer,
             show: action.name
           }
         }
-      });
-    case 'views.drawer.onToggleDrawer':
-      return Object.assign({}, state, {
+      };
+    case 'views.drawer.toggleDialog':
+      return {
+        ...state,
         views: {
+          ...state.views,
+          dialog: {
+            ...state.views.dialog,
+            show: action.name
+          }
+        }
+      };
+    case 'views.drawer.toggleDrawer':
+      return {
+        ...state,
+        views: {
+          ...state.views,
           drawer: {
+            ...state.views.drawer,
             open: !state.views.drawer.open
           }
         }
-      });
+      };
     default:
       return state;
   }
