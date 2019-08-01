@@ -1,10 +1,11 @@
 import { connect } from 'react-redux'
 
-import About from '../../components/dialog/about';
+import Theme from '../../components/dialog/theme';
 
 const mapStateToProps = (state) => {
   return {
-    show: state.views.dialog.show === 'about'
+    ...state.views.theme,
+    show: state.views.dialog.show === 'theme'
   };
 }
 
@@ -14,6 +15,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch({
         type: 'views.dialog.reset'
       });
+    },
+    onChangePrimaryColor: (color) => {
+      dispatch({
+        type: 'views.theme.color.changePrimary',
+        color
+      })
     }
   };
 }
@@ -21,4 +28,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(About);
+)(Theme);

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import { withStyles } from '@material-ui/core/styles';
+
 import Fade from '@material-ui/core/Fade';
 import Grow from '@material-ui/core/Grow';
 
@@ -23,7 +24,7 @@ const styles = theme => ({
 class About extends React.Component {
   static propTypes = {
     // State
-    show: PropTypes.string,
+    show: PropTypes.bool,
     // Dispatcher
     onClose: PropTypes.func
   }
@@ -33,7 +34,7 @@ class About extends React.Component {
 
     return (
       <Dialog
-        open={this.props.show === 'about'}
+        open={this.props.show}
         onClose={this.props.onClose}
         scroll='paper'
       >

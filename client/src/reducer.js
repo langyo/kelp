@@ -34,7 +34,10 @@ export default (state = initStore, action) => {
           ...state.views,
           dialog: {
             ...state.views.dialog,
-            show: action.name,
+            show: action.name
+          },
+          drawer: {
+            ...state.views.drawer,
             open: false
           }
         }
@@ -50,6 +53,21 @@ export default (state = initStore, action) => {
           }
         }
       };
+    /* views.theme */
+    case 'views.theme.color.changePrimary':
+      return {
+        ...state,
+        views: {
+          ...state.views,
+          theme: {
+            ...state.views.theme,
+            color: {
+              ...state.views.theme.color,
+              primary: action.color
+            }
+          }
+        }
+      }
     /* pages.picker */
     case 'pages.picker.togglePicker':
       return {
