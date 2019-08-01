@@ -1,35 +1,35 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "es6": true
+    'env': {
+        'browser': true,
+        'es6': true
     },
-    "extends": "eslint:recommended",
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
+    'extends': 'eslint:recommended',
+    'globals': {
+        'Atomics': 'readonly',
+        'SharedArrayBuffer': 'readonly'
     },
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
+    'parserOptions': {
+        'ecmaFeatures': {
+            'jsx': true
         },
-        "ecmaVersion": 2018,
-        "sourceType": "module"
+        'ecmaVersion': 2018,
+        'sourceType': 'module'
     },
-    "plugins": [
-        "react"
+    'plugins': [
+        'react'
     ],
-    "rules": {
-        "indent": [
+    'rules': {
+        'indent': [
             2
         ],
-        "linebreak-style": [
-            "unix"
+        'linebreak-style': [
+            'unix'
         ],
-        "quotes": [
-            "single"
+        'quotes': [
+            'single'
         ],
-        "semi": [
-            "always"
+        'semi': [
+            'always'
         ]
     }
 };

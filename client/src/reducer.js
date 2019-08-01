@@ -1,7 +1,6 @@
 import initStore from './initStore';
 
 export default (state = initStore, action) => {
-  console.log("Redux state:", state);
   switch (action.type) {
     /* views.dialog */
     case 'views.dialog.reset':
@@ -23,7 +22,8 @@ export default (state = initStore, action) => {
           ...state.views,
           drawer: {
             ...state.views.drawer,
-            show: action.name
+            show: action.name,
+            open: false
           }
         }
       };
@@ -34,7 +34,8 @@ export default (state = initStore, action) => {
           ...state.views,
           dialog: {
             ...state.views.dialog,
-            show: action.name
+            show: action.name,
+            open: false
           }
         }
       };

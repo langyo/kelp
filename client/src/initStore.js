@@ -33,6 +33,14 @@ export default {
   database: {
     accounts: {},
     classes: {},
-    broadcasts: {}
+    broadcast: {
+      broadcasts: [
+        {
+          title: 'TEST',
+          date: '未知日期',
+          description: '123\n233\n333'
+        }
+      ]
+    }
   }
 };
