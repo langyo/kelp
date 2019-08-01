@@ -68,6 +68,20 @@ export default (state = initStore, action) => {
           }
         }
       }
+      case 'views.theme.color.changeSecondary':
+        return {
+          ...state,
+          views: {
+            ...state.views,
+            theme: {
+              ...state.views.theme,
+              color: {
+                ...state.views.theme.color,
+                secondary: action.color
+              }
+            }
+          }
+        }
     /* pages.picker */
     case 'pages.picker.togglePicker':
       return {

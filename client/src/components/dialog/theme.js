@@ -15,8 +15,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -31,14 +31,20 @@ const styles = theme => ({
   }
 });
 
-class About extends React.Component {
+class Theme extends React.Component {
   static propTypes = {
     // State
     show: PropTypes.bool,
     // Dispatcher
     onClose: PropTypes.func,
     onChangePrimaryColor: PropTypes.func,
-  }
+  };
+
+  state = {
+    selecting: 0
+  };
+
+  onChangeChoser = (e, n) => this.setState({ selecting: n });
 
   render() {
     const { classes } = this.props;
@@ -51,6 +57,16 @@ class About extends React.Component {
       >
         <DialogTitle>主题</DialogTitle>
         <DialogContent className={classes.content}>
+          <Tabs
+            value={this.state.selecting}
+            onChange={this.onChangeChoser}
+            indicatorColor='primary'
+            textColor='primary'
+            variant='fullWidth'
+          >
+            <Tab label='主色' />
+            <Tab label='副色' />
+          </Tabs>
           <List>
             {
               [
@@ -81,12 +97,30 @@ class About extends React.Component {
                 {
                   color: '#EE0000',
                   name: "正绫红"
-                }].map(n => (
-                  <ListItem button onClick={() => this.props.onChangePrimaryColor(n.color)} key={n.color}>
+                }].map(n => {
+                  let onClick, selecting;
+                  switch(this.state.selecting) {
+                    case 0:
+                      onClick = () => this.props.onChangePrimaryColor(n.color);
+                      selecting = this.props.color.primary === n.color;
+                      break;
+                    case 1:
+                      onClick = () => this.props.onChangeSecondaryColor(n.color);
+                      selecting = this.props.color.secondary === n.color;
+                      break;
+                    default:
+                      throw new Error('未知的标签页');
+                  }
+
+                  return (<ListItem
+                    button 
+                    onClick={onClick}
+                    key={n.color}
+                  >
                     <Avatar style={{ backgroundColor: n.color }} />
-                    <ListItemText className={classes.text} primary={n.name} secondary={this.props.color.primary == n.color ? "已选中" : ""} />
-                  </ListItem>
-                ))
+                    <ListItemText className={classes.text} primary={n.name} secondary={selecting ? "已选中" : ""} />
+                  </ListItem>);
+                })
               }
           </List>
         </DialogContent>
@@ -100,4 +134,4 @@ class About extends React.Component {
   }
 }
 
-export default withStyles(styles)(About);
+export default withStyles(styles)(Theme);

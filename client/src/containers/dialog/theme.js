@@ -21,6 +21,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         type: 'views.theme.color.changePrimary',
         color
       })
+    },
+    onChangeSecondaryColor: (color) => {
+      dispatch({
+        type: 'views.theme.color.changeSecondary',
+        color
+      })
     }
   };
 }
