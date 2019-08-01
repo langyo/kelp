@@ -1,20 +1,19 @@
 import { connect } from 'react-redux'
 
-import Fab from '../../components/views/fab';
+import Main from '../../components/views/main';
 
 const mapStateToProps = (state) => {
-  return state.views.drawer;
+  return {
+    page: state.views.drawer.show
+  };
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onToggleDrawer: () => dispatch({
-      type: 'views.drawer.toggleDrawer'
-    })
   };
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Fab);
+)(Main);

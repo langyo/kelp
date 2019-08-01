@@ -42,5 +42,15 @@ export default {
         }
       ]
     }
+  },
+  pages: {
+    picker: {
+      nowSelectingLuckyGuy: '点击开始',
+      nowSelectingGroup: '',
+      nowSelectingGroupType: '',
+      nowSelectingClass: '',
+      working: false,
+      score: 0
+    }
   }
 };

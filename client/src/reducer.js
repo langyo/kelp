@@ -50,6 +50,40 @@ export default (state = initStore, action) => {
           }
         }
       };
+    /* pages.picker */
+    case 'pages.picker.togglePicker':
+      return {
+        ...state,
+        pages: {
+          ...state.pages,
+          picker: {
+            ...state.pages.picker,
+            working: !state.pages.picker.working
+          }
+        }
+      };
+    case 'pages.picker.score.addOne':
+      return {
+        ...state,
+        pages: {
+          ...state.pages,
+          picker: {
+            ...state.pages.picker,
+            score: state.pages.picker.score + 1
+          }
+        }
+      };
+    case 'pages.picker.score.removeOne':
+      return {
+        ...state,
+        pages: {
+          ...state.pages,
+          picker: {
+            ...state.pages.picker,
+            score: state.pages.picker.score - 1
+          }
+        }
+      };
     default:
       return state;
   }

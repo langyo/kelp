@@ -50,8 +50,6 @@ class Broadcast extends React.Component {
     // State
     broadcasts: PropTypes.array,
     open: PropTypes.bool
-    // Dispatcher
-    // ---
   };
 
   render() {
