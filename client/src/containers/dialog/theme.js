@@ -11,23 +11,17 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onClose: () => {
-      dispatch({
-        type: 'views.dialog.reset'
-      });
-    },
-    onChangePrimaryColor: (color) => {
-      dispatch({
-        type: 'views.theme.color.changePrimary',
-        color
-      })
-    },
-    onChangeSecondaryColor: (color) => {
-      dispatch({
-        type: 'views.theme.color.changeSecondary',
-        color
-      })
-    }
+    onClose: () => dispatch({
+      type: 'views.dialog.reset'
+    }),
+    onChangePrimaryColor: (color) => dispatch({
+      type: 'views.theme.color.changePrimary',
+      color
+    }),
+    onChangeSecondaryColor: (color) => dispatch({
+      type: 'views.theme.color.changeSecondary',
+      color
+    })
   };
 }
 

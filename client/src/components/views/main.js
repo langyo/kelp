@@ -9,6 +9,7 @@ import { Window, TitleBar } from 'react-desktop/windows';
 
 import AboutDialog from '../../containers/dialog/about';
 import ThemeDialog from '../../containers/dialog/theme';
+import SettingDialog from '../../containers/dialog/setting';
 
 import BroadcastPage from '../../containers/pages/broadcast';
 import PickerPage from '../../containers/pages/picker';
@@ -55,6 +56,7 @@ class Main extends React.Component {
           {/* Dialogs */}
           <AboutDialog />
           <ThemeDialog />
+          <SettingDialog />
           {/* Views*/}
           <Fab />
           <Drawer />
