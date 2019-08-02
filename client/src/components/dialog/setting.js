@@ -15,22 +15,33 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
+import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormLabel from '@material-ui/core/FormLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Switch from '@material-ui/core/Switch';
+import Select from '@material-ui/core/Select';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Divider from '@material-ui/core/Divider';
 
 const styles = theme => ({
   content: {
     width: 400
   },
-  text: {
-    marginLeft: 20
+  formControl: {
+    margin: theme.spacing(2),
+    minWidth: 150,
+  },
+  divider: {
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1)
   }
 });
 
-class Theme extends React.Component {
+class Setting extends React.Component {
   static propTypes = {
     // State
     show: PropTypes.bool,
@@ -39,12 +50,6 @@ class Theme extends React.Component {
     onClose: PropTypes.func,
     onToggleNativeMode: PropTypes.func
   };
-
-  state = {
-    selecting: 0
-  };
-
-  onChangeChoser = (e, n) => this.setState({ selecting: n });
 
   render() {
     const { classes } = this.props;
@@ -57,7 +62,7 @@ class Theme extends React.Component {
       >
         <DialogTitle>设置</DialogTitle>
         <DialogContent className={classes.content}>
-          <FormLabel component='legend'>显示设置</FormLabel>
+          <FormLabel>显示</FormLabel>
           <FormGroup>
             <FormControlLabel
               control={
@@ -72,6 +77,22 @@ class Theme extends React.Component {
             />
           </FormGroup>
           <FormHelperText>这将会取消手动绘制窗口框体，转而使用您正在使用的操作系统的本地窗口框体</FormHelperText>
+          <Divider className={classes.divider}/>
+          <FormLabel>语言 / Language</FormLabel>
+          <FormGroup>
+            <FormControl variant="outlined" className={classes.formControl}>
+              <InputLabel>
+                语言
+            </InputLabel>
+              <Select
+                value={this.props.language}
+                onChange={null}
+                input={<OutlinedInput labelWidth={150} name='language' />}
+              >
+                <MenuItem value='zh-chs'>简体中文</MenuItem>
+              </Select>
+            </FormControl>
+          </FormGroup>
         </DialogContent>
         <DialogActions>
           <Button onClick={this.props.onClose} color='primary'>
@@ -83,4 +104,4 @@ class Theme extends React.Component {
   }
 }
 
-export default withStyles(styles)(Theme);
+export default withStyles(styles)(Setting);

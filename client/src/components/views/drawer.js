@@ -34,8 +34,8 @@ const styles = theme => ({
     marginTop: 30
   },
   line: {
-    marginTop: 2,
-    marginBottom: 2
+    marginTop: theme.spacing(0.5),
+    marginBottom: theme.spacing(0.5)
   }
 });
 
@@ -159,7 +159,6 @@ class MainDrawer extends React.Component {
             <ListItemText primary='皮肤主题' />
           </ListItem>
         </List>
-        <Divider />
       </Drawer>
     );
   }
