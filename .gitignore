@@ -63,3 +63,5 @@ typings/
 # npm / yarn
 yarn.lock
 package-lock.json
+
+.idea

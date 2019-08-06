@@ -17,6 +17,8 @@ import PickerPage from '../../containers/pages/picker';
 import Fab from '../../containers/views/fab';
 import Drawer from '../../containers/views/drawer';
 
+const mainWnd = require('electron').remote.getCurrentWindow();
+
 const styles = theme => ({
   main: {
     overflow: 'auto',
@@ -38,7 +40,10 @@ class Main extends React.Component {
         height='600px'
         width='800px'
         padding='0px'>
-        <TitleBar title='KELP' controls onCloseClick={() => window.close()} style={{ zIndex: 10000 }} />
+        <TitleBar title='KELP' controls
+                  onCloseClick={() => window.close()}
+                  onMinimizeClick={() => mainWnd.hide()}
+                  style={{ zIndex: 10000 }} />
         <MuiThemeProvider theme={createMuiTheme({
           palette: {
             primary: {

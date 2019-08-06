@@ -1,4 +1,5 @@
 var path = require('path');
+var webpack = require("webpack");
 
 module.exports = {
   mode: 'development',
@@ -28,5 +29,10 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/public/',
     port: 16000
-  }
+  },
+  plugins: [
+    new webpack.ExternalsPlugin('commonjs', [
+      'electron'
+    ])
+  ]
 };
