@@ -30,6 +30,7 @@ module.exports = {
     publicPath: '/public/',
     port: 16000
   },
+  
   plugins: [
     new webpack.ExternalsPlugin('commonjs', [
       'electron'
