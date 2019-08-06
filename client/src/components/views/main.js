@@ -42,7 +42,7 @@ class Main extends React.Component {
         padding='0px'>
         <TitleBar title='KELP' controls
                   onCloseClick={() => window.close()}
-                  onMinimizeClick={() => mainWnd.hide()}
+                  onMinimizeClick={() => mainWnd.minimize()}
                   style={{ zIndex: 10000 }} />
         <MuiThemeProvider theme={createMuiTheme({
           palette: {
