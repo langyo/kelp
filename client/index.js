@@ -19,7 +19,7 @@ function createMainWnd() {
     }
   });
 
-  mainWnd.loadURL('http://127.0.0.1:16000/public/index.html');
+  mainWnd.loadURL('http://127.0.0.1:16000/public/index.html?port=9233');
 
   mainWnd.on('ready-to-show', ()=>{
     Menu.setApplicationMenu(null);

@@ -34,7 +34,11 @@
     "react-redux": "^7.1.0",
     "react-svg": "^10.0.13",
     "redux": "^4.0.4",
-    "shortid": "^2.2.14"
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "shortid": "^2.2.14",
+    "url-parse": "^1.4.7",
+    "wsbash-h5-client": "^0.1.1"
   },
   "devDependencies": {
     "electron": "^5.0.8",

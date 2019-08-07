@@ -1,14 +1,16 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 
 import Main from './containers/views/main';
-
 import reducer from './reducer';
+import socket from './socket';
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(logger, thunk));
 
 render(
   <Provider store={store}>
