@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import red from '@material-ui/core/colors/red';
+import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
 
 import { Window, TitleBar } from 'react-desktop/windows';
 
@@ -31,6 +30,11 @@ const styles = theme => ({
 });
 
 class Main extends React.Component {
+  static propTypes = {
+    theme: PropTypes.object,
+    page: PropTypes.string
+  };
+
   render() {
     const { classes } = this.props;
 
@@ -44,20 +48,7 @@ class Main extends React.Component {
                   onCloseClick={() => window.close()}
                   onMinimizeClick={() => mainWnd.minimize()}
                   style={{ zIndex: 10000 }} />
-        <MuiThemeProvider theme={createMuiTheme({
-          palette: {
-            primary: {
-              main: this.props.color.primary
-            },
-            secondary: {
-              main: this.props.color.secondary
-            },
-            error: red
-          },
-          typography: {
-            useNextVariants: true,
-          }
-        })}>
+        <MuiThemeProvider theme={this.props.theme}>
           {/* Dialogs */}
           <AboutDialog />
           <ThemeDialog />
