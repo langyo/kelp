@@ -6,15 +6,13 @@ const mapStateToProps = (state) => {
   return {
     show: state.views.dialog.show === 'about'
   };
-}
+};
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    onClose: () => dispatch({
-      type: 'views.dialog.reset'
-    })
-  };
-}
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  onClose: () => dispatch({
+    type: 'views.dialog.reset'
+  })
+});
 
 export default connect(
   mapStateToProps,

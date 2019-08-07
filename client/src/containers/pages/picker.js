@@ -9,19 +9,17 @@ const mapStateToProps = (state) => {
   };
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    onTogglePicking: () => dispatch({
-      type: 'pages.picker.togglePicker'
-    }),
-    onScoreAddOne: () => dispatch({
-      type: 'pages.picker.score.addOne'
-    }),
-    onScoreRemoveOne: () => dispatch({
-      type: 'pages.picker.score.removeOne'
-    })
-  };
-}
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  onTogglePicking: () => dispatch({
+    type: 'pages.picker.togglePicker'
+  }),
+  onScoreAddOne: () => dispatch({
+    type: 'pages.picker.score.addOne'
+  }),
+  onScoreRemoveOne: () => dispatch({
+    type: 'pages.picker.score.removeOne'
+  })
+});
 
 export default connect(
   mapStateToProps,

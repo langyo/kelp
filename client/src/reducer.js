@@ -16,14 +16,17 @@ const get = (obj, path) => {
   return get(obj[next], path);
 }
 
-export default (state = initStore, action) => {
+export default (state, action) => {
+  // Initialize the state.
+  if(!state) return initStore;
+
   // Parse the action path.
   let path = action.type.split('.');
 
   // Get the reducer.
-  let reducer = get(Object.assign({}, reducers), path);
+  let reducer = get(reducers, path);
 
   // Run the reducer.
-  if(reducer) return merge(Object.assign({}, state), reducer(state, action));
+  if(reducer) return merge(state, reducer(state, action));
   else return state;
 };
