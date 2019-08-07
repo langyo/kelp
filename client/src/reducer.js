@@ -19,6 +19,7 @@ const get = (obj, path) => {
 export default (state, action) => {
   // Initialize the state.
   if(!state) return initStore;
+  state = Object.assign(new Object(), state);
 
   // Parse the action path.
   let path = action.type.split('.');
