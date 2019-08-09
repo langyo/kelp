@@ -1,0 +1,23 @@
+{
+  "name": "kelp-server",
+  "version": "0.1.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/langyo/kelp.git"
+  },
+  "author": "langyo",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/langyo/kelp/issues"
+  },
+  "homepage": "https://github.com/langyo/kelp#readme",
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "dependencies": {
+    "mongoose": "^5.6.9",
+    "wsbash-node-server": "^0.1.1"
+  },
+  "devDependencies": {}
+}
