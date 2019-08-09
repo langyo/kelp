@@ -48,6 +48,7 @@
     "shortid": "^2.2.14",
     "url-parse": "^1.4.7",
     "wsbash-h5-client": "^0.1.1",
+    "wsbash-node-client": "^0.1.0",
     "wsbash-node-server": "^0.1.1"
   },
   "devDependencies": {

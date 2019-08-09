@@ -3,15 +3,17 @@ const { app, BrowserWindow, Menu } = electron;
 let mainWnd = null;
 
 const SocketServer = require('wsbash-node-server');
+const SocketClient = require('wsbash-node-client');
 const portTest = require('portscanner');
 
-let server, port;
+let server, client, port;
 
 app.on('ready', ()=>{
   portTest.findAPortNotInUse(9233, 10000, 'localhost', function(error, p) {
     if(error) console.error(error);
     port = p;
     server = new SocketServer(port);
+    client = new SocketClient('ws://localhost:9233');
     registerSocketServer();
     createMainWnd();
   });
