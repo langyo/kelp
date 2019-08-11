@@ -4,28 +4,25 @@ let mainWnd = null;
 
 const SocketServer = require('wsbash-node-server');
 const SocketClient = require('wsbash-node-client');
-const portTest = require('portscanner');
+const PortTest = require('portscanner');
+
+const registerSocketServer = require('./socketServer');
 
 let server, client, port;
 
 app.on('ready', ()=>{
-  portTest.findAPortNotInUse(9233, 10000, 'localhost', function(error, p) {
+  PortTest.findAPortNotInUse(9233, 10000, 'localhost', function(error, p) {
     if(error) console.error(error);
     port = p;
     server = new SocketServer(port);
     client = new SocketClient('ws://localhost:9233');
-    registerSocketServer();
-    createMainWnd();
+    registerSocketServer(server, client).then(createMainWnd);
   });
 });
 
 app.on('window-all-closed', () => {
   app.quit();
 });
-
-function registerSocketServer() {
-  server.register('test', () => console.log('test'));
-}
 
 function createMainWnd() {
   mainWnd = new BrowserWindow({

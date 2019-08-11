@@ -1,10 +1,8 @@
-const mongoose = require('mongoose');
-const SocketServer = require('wsbash-node-server');
+let databasePromise = require('./databaseDriver');
+let socketServerPromise = require('./socketServerDriver');
 
-let db = mongoose.createConnection('mongodb://localhost/test');
+databasePromise.then(db => {
+  socketServerPromise.then(server => {
 
-db.on('error', e => console.error(e));
-
-db.on('open', () => {
-  
-})
+  });
+});

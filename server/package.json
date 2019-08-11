@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "mongoose": "^5.6.9",
+    "portscanner": "^2.2.0",
     "wsbash-node-server": "^0.1.1"
   },
   "devDependencies": {}
