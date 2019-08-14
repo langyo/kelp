@@ -8,7 +8,7 @@ import logger from 'redux-logger';
 
 import Main from './containers/views/main';
 import reducer from './reducer';
-import socket from './socket';
+import socket from './socketDriver';
 
 const store = createStore(reducer, applyMiddleware(logger, thunk));
 

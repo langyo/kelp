@@ -109,7 +109,7 @@ databasePromise.then(db => {
         }
       })
     });
-  });
 
-  console.log('Command Initialized.');
+    console.log('Command Initialized.');
+  });
 });
