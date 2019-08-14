@@ -31,11 +31,12 @@ databasePromise.then(db => {
      */
     server.register('account.verify', (obj, callback, clients) => {
       db.User.findOne({ session: obj.key }).exec((err, user) => {
-        if (err) {
+        if (err || user === null) {
           log(null, 'account.verify', false, 'error.account.noSession');
           callback({ pass: false });
         }
         else {
+          console.log(user);
           sessionMap[obj.id] = user.session;
           log(user._id, 'account.verify');
           callback({ pass: true });
@@ -53,7 +54,7 @@ databasePromise.then(db => {
      */
     server.register('account.login', (obj, callback, clients) => {
       db.User.findOne({ name: obj.name }).exec((err, user) => {
-        if (err) {
+        if (err || user === null) {
           log(null, 'account.login', false, 'error.account.noUser');
           callback({ pass: false, reason: 'error.account.noUser' });
         }
@@ -61,19 +62,20 @@ databasePromise.then(db => {
           if (user.password !== obj.password) {
             log(user._id, 'account.login', false, 'error.account.wrongPassword');
             callback({ pass: false, reason: 'error.account.wrongPassword' });
+          } else {
+            let session = shortid.generate();
+            user.session = session;
+            user.save(err => {
+              if (err) {
+                log(user._id, 'account.login', false, 'error.account.writeFailed');
+                callback({ pass: false, reason: 'error.account.writeFailed' });
+              } else {
+                log(user._id, 'account.login');
+                callback({ pass: true, session });
+                sessionMap[obj.id] = session;
+              }
+            });
           }
-          let session = shortid.generate();
-          user.session = session;
-          user.save(err => {
-            if (err) {
-              log(user._id, 'account.login', false, 'error.account.writeFailed');
-              callback({ pass: false, reason: 'error.account.writeFailed' });
-            } else {
-              log(user._id, 'account.login');
-              callback({ pass: true, session });
-              sessionMap[obj.id] = session;
-            }
-          });
         }
       });
     });
@@ -86,8 +88,8 @@ databasePromise.then(db => {
      * @return  reason:string   如果未成功，将会提供此字段，提供失败原因
      */
     server.register('account.register', (obj, callback, clients) => {
-      db.User.findOne({ name: obj.name }, (err, doc)=> {
-        if (doc != null) {
+      db.User.findOne({ name: obj.name }, (err, doc) => {
+        if (err || doc !== null) {
           log(null, 'account.register', false, 'error.account.repeatRegistration');
           callback({ state: false, reason: 'error.account.repeatRegistration' });
         } else {
