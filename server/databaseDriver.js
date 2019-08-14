@@ -21,6 +21,7 @@ module.exports = new Promise(resolve => {
     console.log('Database has been connected.');
 
     resolve(createModels({
+      // 广播
       Broadcast: {
         date: Date,
         message: String,
@@ -29,9 +30,14 @@ module.exports = new Promise(resolve => {
           ref: 'UserGroup'
         }]
       },
+      // 用户
       User: {
         name: String,
         password: {
+          type: String,
+          default: ''
+        },
+        session: {
           type: String,
           default: ''
         },
@@ -46,12 +52,9 @@ module.exports = new Promise(resolve => {
         scoreData: [{
           type: ObjectId,
           ref: 'Score'
-        }],
-        log: [{
-          type: ObjectId,
-          ref: 'Log'
         }]
       },
+      // 班级
       Class: {
         name: String,
         students: [{
@@ -75,13 +78,22 @@ module.exports = new Promise(resolve => {
           ref: 'User'
         }
       },
+      // 日志
       Log: {
         operator: {
           type: ObjectId,
           ref: 'User'
         },
-        description: String
+        action: String,
+        state: Boolean,
+        reasion: String,
+        data: {
+          type: String,
+          default: ''
+        },
+        time: Date
       },
+      // 用户组
       UserGroup: {
         name: String,
         expression: {
@@ -93,6 +105,7 @@ module.exports = new Promise(resolve => {
           ref: 'User'
         }]
       },
+      // 权限
       Expression: {
         kind: {
           type: String,
@@ -106,6 +119,7 @@ module.exports = new Promise(resolve => {
           enum: ['userGroup', 'class', 'group']
         }
       },
+      // 学习小组类别
       ClassGroupType: {
         name: String,
         groups: [{
@@ -117,6 +131,7 @@ module.exports = new Promise(resolve => {
           ref: 'User'
         }]
       },
+      // 学习小组
       ClassGroup: {
         name: String,
         members: [{
@@ -128,17 +143,15 @@ module.exports = new Promise(resolve => {
           ref: 'User'
         }]
       },
+      // 分数
       Score: {
         kind: {
           type: ObjectId,
           ref: 'ScoreType' 
         },
-        score: Number,
-        log: [{
-          type: ObjectId,
-          ref: 'Log'
-        }]
+        score: Number
       },
+      // 分数类型
       ScoreType: {
         name: String,
         tradeRules: [{
@@ -146,6 +159,7 @@ module.exports = new Promise(resolve => {
           ref: 'TradeRule'
         }]
       },
+      // 换算规则
       TradeRule: {
         from: {
           type: ObjectId,
