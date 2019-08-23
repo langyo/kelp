@@ -14,6 +14,7 @@ module.exports = {
   devtool: 'source-map',
 
   module: {
+    unknownContextCritical : false,
     rules: [
       {
         test: /\.(js)$/,

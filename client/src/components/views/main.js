@@ -16,8 +16,6 @@ import PickerPage from '../../containers/pages/picker';
 import Fab from '../../containers/views/fab';
 import Drawer from '../../containers/views/drawer';
 
-const mainWnd = require('electron').remote.getCurrentWindow();
-
 const styles = theme => ({
   main: {
     overflow: 'auto',
